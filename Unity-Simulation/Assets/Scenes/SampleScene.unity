@@ -133,15 +133,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,6 +197,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 70213427}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 70213431}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 70213432}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
 --- !u!1 &70213426 stripped
 GameObject:
@@ -251,6 +257,69 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &70213431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70213426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c32e8a52bd773c1286fcf4a2c2897be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DroneController
+  maxThrust: 0.5
+  horizontalSpeed: 5
+  verticalSpeed: 3
+  yawSpeed: 100
+  dampingForce: 2
+--- !u!114 &70213432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70213426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 8787b0676507cc933b025bf0e2ddc901, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6c1c8158-ef61-4703-9bdb-39a5e832aaf5
+    m_ActionName: 'DroneControls/Forward[/Keyboard/s,/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62587f5a-6a86-4745-9d49-e482db27138b
+    m_ActionName: 'DroneControls/Lateral[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 120cc64c-02fe-401e-98d7-5b2a83f55c81
+    m_ActionName: 'DroneControls/Vertical[/Keyboard/leftShift,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e3d289e-5c2a-4bbb-a2ed-3045be47727a
+    m_ActionName: 'DroneControls/Yaw[/Keyboard/e,/Keyboard/q]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: af6f63e5-2de6-43d0-9211-75a5495763b0
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &223379368
 PrefabInstance:
   m_ObjectHideFlags: 0
