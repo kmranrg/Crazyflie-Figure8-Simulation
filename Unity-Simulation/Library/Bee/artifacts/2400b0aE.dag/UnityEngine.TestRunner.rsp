@@ -132,6 +132,8 @@
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER
 -define:TEXTCORE_FONT_ENGINE_1_6_OR_NEWER
+-define:USE_INPUT_SYSTEM_POSE_CONTROL
+-define:USE_STICK_CONTROL_THUMBSTICKS
 -define:UNITY_TESTS_FRAMEWORK
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
@@ -391,6 +393,8 @@
 -r:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlDocument.dll"
 -r:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlSerializer.dll"
 -r:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
+-r:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll"
+-r:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll"
 -r:"Library/PackageCache/com.unity.ext.nunit@ec2d0043d6fc/net40/unity-custom/nunit.framework.dll"
 -analyzer:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/kmranrg/Unity/Hub/Editor/6000.4.11f1/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/Unity.SourceGenerators.dll"

@@ -7,10 +7,12 @@
 #
 .utmp/
 /[Ll]ibrary/
+Library
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+Builds
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log

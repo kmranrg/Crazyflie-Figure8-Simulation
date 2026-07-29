@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639208664350000000
-    m_Hash: 4128116953
+      ticks: 639208883300000000
+    m_Hash: 3417281574
   m_LockFileStatus:
     m_FilePath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639208664350000000
-    m_Hash: 782482473
+      ticks: 639208883300000000
+    m_Hash: 738159708
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -2132,6 +2132,811 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 1.9.11
     minimumUnityVersion: 2021.3
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.interaction.toolkit@3.4.1
+  testable: 0
+  isDirectDependency: 1
+  version: 3.4.1
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.interaction.toolkit@4612b35e2aac
+  assetPath: Packages/com.unity.xr.interaction.toolkit
+  name: com.unity.xr.interaction.toolkit
+  displayName: XR Interaction Toolkit
+  author:
+    name: 
+    email: 
+    url: 
+  category: XR
+  type: 
+  description: A high-level, component-based, interaction system for creating VR
+    and AR experiences. It provides a framework that makes 3D and UI interactions
+    available from Unity input events. The core of this system is a set of base Interactor
+    and Interactable components, and an Interaction Manager that ties these two types
+    of components together. It also contains components that you can use for locomotion
+    and drawing visuals.
+  errors: []
+  versions:
+    all:
+    - 0.0.6-preview
+    - 0.9.0-preview
+    - 0.9.1-preview
+    - 0.9.2-preview
+    - 0.9.3-preview
+    - 0.9.4-preview
+    - 0.10.0-preview.7
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0-pre.4
+    - 1.0.0-pre.5
+    - 1.0.0-pre.6
+    - 1.0.0-pre.8
+    - 2.0.0-pre.5
+    - 2.0.0-pre.6
+    - 2.0.0-pre.7
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    - 2.0.3
+    - 2.0.4
+    - 2.1.0-pre.1
+    - 2.1.1
+    - 2.2.0
+    - 2.3.0-pre.1
+    - 2.3.0
+    - 2.3.1
+    - 2.3.2
+    - 2.4.0-pre.1
+    - 2.4.0-pre.2
+    - 2.4.0
+    - 2.4.1
+    - 2.4.3
+    - 2.5.0
+    - 2.5.1
+    - 2.5.2
+    - 2.5.3
+    - 2.5.4
+    - 2.6.3
+    - 2.6.4
+    - 2.6.5
+    - 3.0.0-pre.1
+    - 3.0.0-pre.2
+    - 3.0.0
+    - 3.0.1
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.8
+    - 3.0.9
+    - 3.0.10
+    - 3.0.11
+    - 3.1.0-pre.1
+    - 3.1.0
+    - 3.1.1
+    - 3.1.2
+    - 3.1.3
+    - 3.2.0-pre.1
+    - 3.2.0
+    - 3.2.1
+    - 3.2.2
+    - 3.3.0-pre.1
+    - 3.3.0
+    - 3.3.1
+    - 3.3.2
+    - 3.4.0-pre.1
+    - 3.4.0-pre.2
+    - 3.4.0
+    - 3.4.1
+    - 3.5.0-pre.1
+    - 3.5.0-pre.2
+    - 3.5.0
+    - 3.5.1
+    - 3.6.0-pre.1
+    compatible:
+    - 3.4.1
+    - 3.5.0-pre.1
+    - 3.5.0-pre.2
+    - 3.5.0
+    - 3.5.1
+    - 3.6.0-pre.1
+    recommended: 3.4.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.inputsystem
+    version: 1.8.1
+  - name: com.unity.mathematics
+    version: 1.2.6
+  - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.4.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.inputsystem
+    version: 1.19.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.mathematics
+    version: 1.3.3
+  - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  keywords:
+  - XR
+  - VR
+  - toolkit
+  - interaction
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639107894285910000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.4/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.xr.interaction.toolkit.git
+    revision: cec2ba7891b35b8df9378395ebb07f8e3ebc2b6d
+    path: 
+  unityLifecycle:
+    version: 3.4.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n- Changed some components to no longer
+    sort found components by instance ID when finding a component due to `FindObjectsSortMode.InstanceID`
+    being deprecated in Unity 6.4. This may cause a different component instance
+    to be used for unassigned references in Unity 6.4 or newer. (Backport from 3.5.0-pre.2)\n\n\n###
+    Fixed\n- Fixed Editor Assembly Definition to include `Unity.InputSystem.Editor`
+    in the references to fix script compilation on some versions of Input System
+    (com.unity.inputsystem). (Backport from 3.5.0-pre.1)\n- Fixed warnings caused
+    by APIs that were deprecated in Unity 6.4. (Backport from 3.5.0-pre.2)\n- Fixed
+    an issue caused when the `XRDeviceSimulatorHandsProvider` attempts to register
+    more than once with the `SubsystemDescriptorStore`. This caused a warning when
+    using fast-enter play mode. [UUM-135026](https://issuetracker.unity3d.com/product/unity/issues/guid/UUM-135026)
+    (Backport from 3.5.0-pre.2)"}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 4612b35e2aaceecac9e0bab687921365bcd41d8a
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.4.1
+    minimumUnityVersion: 2022.3
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.management@4.5.4
+  testable: 0
+  isDirectDependency: 1
+  version: 4.5.4
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.management@e3a3882b360a
+  assetPath: Packages/com.unity.xr.management
+  name: com.unity.xr.management
+  displayName: XR Plugin Management
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Package that provides simple management of XR plug-ins. Manages and
+    offers help with loading, initialization, settings, and build support for XR
+    plug-ins.
+  errors: []
+  versions:
+    all:
+    - 0.1.0-preview.8
+    - 0.1.0-preview.12
+    - 1.0.0-preview.2
+    - 2.0.0-preview.3
+    - 2.0.0-preview.6
+    - 2.0.0-preview.9
+    - 2.0.0-preview.10
+    - 2.0.0-preview.13
+    - 2.0.0-preview.21
+    - 2.0.0-preview.22
+    - 2.0.0-preview.24
+    - 2.0.0-preview.25
+    - 2.0.0-preview.26
+    - 3.0.1
+    - 3.0.2-preview.1
+    - 3.0.2-preview.2
+    - 3.0.3
+    - 3.0.4-preview.1
+    - 3.0.4-preview.3
+    - 3.0.4
+    - 3.0.5-preview.1
+    - 3.0.5
+    - 3.0.6-preview.2
+    - 3.0.6
+    - 3.1.0-preview.2
+    - 3.2.4
+    - 3.2.6
+    - 3.2.7
+    - 3.2.9
+    - 3.2.10
+    - 3.2.11-preview.1
+    - 3.2.12
+    - 3.2.13
+    - 3.2.15
+    - 3.2.16
+    - 3.2.17
+    - 4.0.0-exp.2
+    - 4.0.0-pre.2
+    - 4.0.0-pre.3
+    - 4.0.1
+    - 4.0.3
+    - 4.0.5
+    - 4.0.6
+    - 4.0.7
+    - 4.1.0-pre.1
+    - 4.1.0-pre.2
+    - 4.1.0
+    - 4.2.0
+    - 4.2.1
+    - 4.3.1
+    - 4.3.3
+    - 4.4.0
+    - 4.4.1
+    - 4.5.0
+    - 4.5.1
+    - 4.5.2
+    - 4.5.3
+    - 4.5.4
+    - 4.6.0
+    - 4.7.0
+    compatible:
+    - 4.5.2
+    - 4.5.3
+    - 4.5.4
+    - 4.6.0
+    - 4.7.0
+    recommended: 4.5.4
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.2.1
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.legacyinputhelpers
+    version: 2.1.11
+  resolvedDependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  - name: com.unity.xr.legacyinputhelpers
+    version: 3.0.1
+  keywords:
+  - xr
+  - sdk
+  - ar
+  - vr
+  - management
+  - build
+  - plugin
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639017809809290000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.management@4.5/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/xr.sdk.management.git
+    revision: bc4c0079c6af1f1261e7ff475df4eda9875a72a0
+    path: 
+  unityLifecycle:
+    version: 4.5.2
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Removed\n\n- Removed `com.unity.openxr` as an available
+    package for Universal Windows Platform on 6000.4 and above."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: e3a3882b360a930851150ee50076985f763c9b3f
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 4.5.2
+    minimumUnityVersion: 2022.3
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.meta-openxr@2.5.1
+  testable: 0
+  isDirectDependency: 1
+  version: 2.5.1
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.meta-openxr@6d169a09f2c7
+  assetPath: Packages/com.unity.xr.meta-openxr
+  name: com.unity.xr.meta-openxr
+  displayName: Unity OpenXR Meta
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Enables you to build mixed reality apps for Meta Quest devices by
+    implementing support for Meta's OpenXR extensions.
+  errors: []
+  versions:
+    all:
+    - 0.1.1
+    - 0.1.2
+    - 0.2.1
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 1.0.4
+    - 2.0.0-pre.1
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    - 2.1.0-pre.1
+    - 2.1.0
+    - 2.1.1
+    - 2.2.0-pre.1
+    - 2.2.0
+    - 2.2.1
+    - 2.3.0-pre.2
+    - 2.3.0
+    - 2.3.1
+    - 2.3.2
+    - 2.4.0-pre.1
+    - 2.4.0
+    - 2.4.1
+    - 2.5.0-pre.1
+    - 2.5.0
+    - 2.5.1
+    - 2.6.0-pre.1
+    compatible:
+    - 2.4.1
+    - 2.5.0-pre.1
+    - 2.5.0
+    - 2.5.1
+    - 2.6.0-pre.1
+    recommended: 2.5.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.xr.openxr
+    version: 1.15.1
+  - name: com.unity.xr.core-utils
+    version: 2.5.1
+  - name: com.unity.xr.management
+    version: 4.4.0
+  - name: com.unity.xr.arfoundation
+    version: 6.5.0
+  - name: com.unity.xr.compositionlayers
+    version: 2.4.0
+  resolvedDependencies:
+  - name: com.unity.xr.openxr
+    version: 1.16.1
+  - name: com.unity.inputsystem
+    version: 1.19.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.management
+    version: 4.5.4
+  - name: com.unity.xr.legacyinputhelpers
+    version: 3.0.1
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.xr.arfoundation
+    version: 6.5.0
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.mathematics
+    version: 1.3.3
+  - name: com.unity.editorcoroutines
+    version: 1.1.0
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  - name: com.unity.modules.unityanalytics
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.xr.compositionlayers
+    version: 2.4.0
+  keywords:
+  - xreditorsubsystem
+  - openxr
+  - meta
+  - oculus
+  - xr
+  - vr
+  - mr
+  - virtual
+  - reality
+  - rift
+  - quest
+  - arfoundation
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639190438202010000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.meta-openxr@2.5/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/xr.sdk.meta-openxr.git
+    revision: aa7c579f15f1692338a2359079cc60956c82fc9e
+    path: 
+  unityLifecycle:
+    version: 2.4.1
+    nextVersion: 
+    recommendedVersion: 2.5.0
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n\n- Fixed a rare issue where the Editor
+    could unexpectedly quit after entering and exiting Play mode with Meta Horizon
+    Link, if `UnityOpenXRMeta_XrFuncTable_ClearCachedFunc` was called after the OpenXR
+    loader was deinitialized."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 6d169a09f2c781fbd65a4cdee89f70c76fb47ba7
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.4.1
+    minimumUnityVersion: 6000.0
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.openxr@1.16.1
+  testable: 0
+  isDirectDependency: 1
+  version: 1.16.1
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.openxr@ef0033a586bf
+  assetPath: Packages/com.unity.xr.openxr
+  name: com.unity.xr.openxr
+  displayName: OpenXR Plugin
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: OpenXR is an open, royalty-free standard developed by Khronos that
+    aims to simplify AR/VR development by allowing developers to target a wide range
+    of AR/VR devices. Use this plug-in to enable OpenXR in XR Plug-in Management.
+  errors: []
+  versions:
+    all:
+    - 0.1.1-preview.1
+    - 0.1.2-preview.2
+    - 1.0.0-pre.1
+    - 1.0.2
+    - 1.0.3
+    - 1.1.1
+    - 1.2.0
+    - 1.2.2
+    - 1.2.3
+    - 1.2.8
+    - 1.3.0
+    - 1.3.1
+    - 1.4.0
+    - 1.4.1
+    - 1.4.2
+    - 1.5.0-exp.1
+    - 1.5.0
+    - 1.5.1
+    - 1.5.3
+    - 1.6.0
+    - 1.7.0
+    - 1.8.0
+    - 1.8.1
+    - 1.8.2
+    - 1.9.1
+    - 1.10.0
+    - 1.11.0-exp.1
+    - 1.11.0
+    - 1.11.1-exp.1
+    - 1.12.0-exp.1
+    - 1.12.0
+    - 1.12.1
+    - 1.13.0
+    - 1.13.1
+    - 1.13.2
+    - 1.14.0
+    - 1.14.1
+    - 1.14.2
+    - 1.14.3
+    - 1.15.0-pre.1
+    - 1.15.0-pre.2
+    - 1.15.0
+    - 1.15.1
+    - 1.16.0-pre.1
+    - 1.16.0-pre.2
+    - 1.16.0
+    - 1.16.1
+    - 1.17.0-pre.1
+    - 1.17.0-pre.2
+    - 1.17.0
+    - 1.17.1
+    - 1.18.0-pre.1
+    - 1.18.0-pre.2
+    compatible:
+    - 1.16.1
+    - 1.17.0-pre.1
+    - 1.17.0-pre.2
+    - 1.17.0
+    - 1.17.1
+    - 1.18.0-pre.1
+    - 1.18.0-pre.2
+    recommended: 1.16.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.inputsystem
+    version: 1.6.3
+  - name: com.unity.xr.core-utils
+    version: 2.3.0
+  - name: com.unity.xr.management
+    version: 4.4.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.xr.legacyinputhelpers
+    version: 2.1.2
+  resolvedDependencies:
+  - name: com.unity.inputsystem
+    version: 1.19.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.management
+    version: 4.5.4
+  - name: com.unity.xr.legacyinputhelpers
+    version: 3.0.1
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  keywords:
+  - openxr
+  - xr
+  - reality
+  - xreditorsubsystem
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639009873933310000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.openxr@1.16/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/xr.sdk.openxr.git
+    revision: c7a9defb4d388418b78bd9f86b5ecc62397d6288
+    path: 
+  unityLifecycle:
+    version: 1.16.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n\n* Changed wording of validation rule
+    that checks for symmetric projection when using the Multiview Render Regions
+    Optimizations Mode.\n* Changed OpenXR loader version to 1.1.53.\n* Changed the
+    visibility mask to not create an occlusion mesh when using a 2022.3 editor to
+    reduce memory footprint.\n\n### Removed\n\n* Removed an unit test `PluginVersion`
+    which was used internally to validate package version.\n\n### Fixed\n\n * Fixed
+    the OpenXR test \"DuplicateSettingAssetTest\" to communicate with asset database
+    when swapping asset files.\n * Fixed an issue in OpenXR Runtime Debugger window
+    to show correctly sized buttons. ([OXRB-682](https://issuetracker.unity3d.com/issues/folder-button-in-openxr-runtime-debugger-window-is-oversized))\n
+    * Fixed a dependency issue by including AndroidJNI as a dependency. ([OXRB-696](https://jira.unity3d.com/browse/OXRB-696))\n
+    * Fixed a crash when using eye tracked foveated rendering and sleeping/waking
+    device by making sure primary swapchain reference was reset before applying foveation
+    profile.\n * Fixed unreliable writing of `xr-meta-enabled` to boot.config by
+    ensuring it is always set based on the actual feature state.\n * Fixed Bluetooth
+    permissions being removed when building apps using the Meta Quest Feature. The
+    permissions are now kept when required by Unity APIs or a plugin''s manifest.
+    For more information on Android permissions in Unity, refer to [Android App Manifest](https://docs.unity3d.com/6000.2/Documentation/Manual/android-manifest.html).\n
+    * Fixed issue where project settings window would fail to render if an OpenXR
+    Feature was removed while the editor was running. ([OXRB-715](https://jira.unity3d.com/browse/OXRB-715))\n
+    * Fixed an error in Project Validation related to EntityId''s in Unity 6000.4+."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: ef0033a586bf33cb236bfe77cb661fe1b2882748
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.16.1
+    minimumUnityVersion: 2022.3
   compliance:
     status: 0
     violation:
@@ -5479,6 +6284,860 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
+- packageId: com.unity.xr.core-utils@2.6.0
+  testable: 0
+  isDirectDependency: 0
+  version: 2.6.0
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.core-utils@a8b900321199
+  assetPath: Packages/com.unity.xr.core-utils
+  name: com.unity.xr.core-utils
+  displayName: XR Core Utilities
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: "Common utility classes for XR projects\nRefer to API documentation
+    for details. Some particularly useful utilities include:\n\u25AA Geometry Utilities\n 
+    \u25AA Point of closest approach\n  \u25AA Closest edge of a polygon\n  \u25AA
+    Check if point inside of polygon\n  \u25AA Compute 2D convex hull\n\u25AA Collection
+    pool\n\u25AA Math Utilities\n  \u25AA Bounds extensions\n  \u25AA Quaternion
+    extensions\n\u25AA Editor GUI\n  \u25AA Flags Property Drawer\n\u25AA Scriptable
+    Settings (serialized project settings)\n\u25AA Conditional Compilation Utility\n\u25AA
+    XR Origin Implementation"
+  errors: []
+  versions:
+    all:
+    - 2.0.0-pre.3
+    - 2.0.0-pre.5
+    - 2.0.0-pre.6
+    - 2.0.0
+    - 2.0.1
+    - 2.1.0-pre.1
+    - 2.1.0
+    - 2.1.1
+    - 2.2.0-pre.1
+    - 2.2.0-pre.2
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+    - 2.3.0-pre.1
+    - 2.3.0-pre.2
+    - 2.3.0-pre.3
+    - 2.3.0
+    - 2.4.0-exp.1
+    - 2.4.0-exp.2
+    - 2.4.0-exp.3
+    - 2.4.0
+    - 2.5.0
+    - 2.5.1
+    - 2.5.2
+    - 2.5.3
+    - 2.6.0-pre.1
+    - 2.6.0-pre.2
+    - 2.6.0
+    compatible:
+    - 2.6.0
+    recommended: 2.6.0
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  keywords:
+  - xr
+  - ar
+  - augmented
+  - reality
+  - utility
+  - utilities
+  - core
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639119952049880000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.core-utils@2.6/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.xr.core-utils.git
+    revision: 74780f263216bc60379832ec4381846e2ae535be
+    path: 
+  unityLifecycle:
+    version: 2.6.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 0
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n\n- Added [NativeArrayUtils.EnsureExactSize](xref:Unity.XR.CoreUtils.NativeArrayUtils.EnsureExactSize*)."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: a8b900321199038fe4200211a52f46d2f4bae786
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.6.0
+    minimumUnityVersion: 2022.3.0f1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.legacyinputhelpers@3.0.1
+  testable: 0
+  isDirectDependency: 0
+  version: 3.0.1
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.legacyinputhelpers@3f62d634f63b
+  assetPath: Packages/com.unity.xr.legacyinputhelpers
+  name: com.unity.xr.legacyinputhelpers
+  displayName: XR Legacy Input Helpers
+  author:
+    name: 
+    email: 
+    url: 
+  category: XR
+  type: 
+  description: This package includes the tracked pose driver for the legacy input
+    system, the XR Bindings Seeding Tool and 3Dof Arm Model support for the Tracked
+    Pose Driver. The Tracked Pose Driver is a behavior that enables GameObjects to
+    track input devices, the XR Bindings Seeding Tool adds a menu item under the
+    'Assets' menu which populates the Input Asset with Unity's crossplatform Input
+    Bindings
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    - 1.0.2
+    - 1.0.3
+    - 1.3.1
+    - 1.3.2
+    - 1.3.4
+    - 1.3.5
+    - 1.3.6
+    - 1.3.7
+    - 1.3.8
+    - 1.3.11
+    - 2.0.1
+    - 2.0.2
+    - 2.0.4
+    - 2.0.6
+    - 2.0.8
+    - 2.1.1
+    - 2.1.2
+    - 2.1.3
+    - 2.1.4
+    - 2.1.6
+    - 2.1.7
+    - 2.1.8
+    - 2.1.9
+    - 2.1.10
+    - 2.1.11
+    - 2.1.12
+    - 2.1.13
+    - 3.0.0
+    - 3.0.1
+    compatible:
+    - 3.0.1
+    recommended: 3.0.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  keywords:
+  - TPD
+  - Tracked Pose Driver
+  - XR
+  - Input
+  - Helpers
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639080995303050000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.legacyinputhelpers@3.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.xr.legacyinputhelpers.git
+    revision: d96bf6426ab6ddaf487bd661fcf7d47d5b39d7bd
+    path: 
+  unityLifecycle:
+    version: 3.0.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 0
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n- Fixed static variable declarations to
+    enable proper use of [Fast Enter Play Mode](https://docs.unity3d.com/Manual/domain-reloading.html)."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 3f62d634f63be463f9e1f7b0deea814a27526da4
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.0.1
+    minimumUnityVersion: 2022.3
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.arfoundation@6.5.0
+  testable: 0
+  isDirectDependency: 0
+  version: 6.5.0
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.arfoundation@13d2457b468b
+  assetPath: Packages/com.unity.xr.arfoundation
+  name: com.unity.xr.arfoundation
+  displayName: AR Foundation
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: AR Foundation enables you to create multi-platform augmented reality
+    (AR) apps with Unity. To learn more about AR Foundation, click the Documentation
+    link above.
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview.12
+    - 1.0.0-preview.13
+    - 1.0.0-preview.14
+    - 1.0.0-preview.17
+    - 1.0.0-preview.18
+    - 1.0.0-preview.19
+    - 1.0.0-preview.20
+    - 1.0.0-preview.22
+    - 1.1.0-preview.6
+    - 1.5.0-preview.2
+    - 1.5.0-preview.5
+    - 1.5.0-preview.6
+    - 1.5.0-preview.7
+    - 2.0.2
+    - 2.1.0-preview.2
+    - 2.1.0-preview.3
+    - 2.1.1
+    - 2.1.3
+    - 2.1.4
+    - 2.1.8
+    - 2.1.10
+    - 2.1.14
+    - 2.1.16
+    - 2.1.18
+    - 2.1.19
+    - 2.2.0-preview.2
+    - 2.2.0-preview.3
+    - 2.2.0-preview.6
+    - 3.0.0-preview.1
+    - 3.0.0-preview.2
+    - 3.0.0-preview.3
+    - 3.0.0-preview.4
+    - 3.0.0-preview.6
+    - 3.0.1
+    - 3.1.0-preview.1
+    - 3.1.0-preview.3
+    - 3.1.0-preview.4
+    - 3.1.0-preview.6
+    - 3.1.0-preview.7
+    - 3.1.0-preview.8
+    - 3.1.3
+    - 3.1.5
+    - 3.1.6
+    - 3.1.10
+    - 4.0.0-preview.1
+    - 4.0.0-preview.3
+    - 4.0.2
+    - 4.0.8
+    - 4.0.9
+    - 4.0.10
+    - 4.0.12
+    - 4.1.0-preview.1
+    - 4.1.0-preview.2
+    - 4.1.0-preview.3
+    - 4.1.0-preview.5
+    - 4.1.0-preview.6
+    - 4.1.0-preview.7
+    - 4.1.0-preview.9
+    - 4.1.0-preview.10
+    - 4.1.0-preview.11
+    - 4.1.0-preview.12
+    - 4.1.0-preview.13
+    - 4.1.1
+    - 4.1.3
+    - 4.1.5
+    - 4.1.7
+    - 4.1.9
+    - 4.1.10
+    - 4.1.12
+    - 4.1.13
+    - 4.2.0-pre.2
+    - 4.2.0-pre.3
+    - 4.2.0-pre.4
+    - 4.2.0-pre.5
+    - 4.2.0-pre.7
+    - 4.2.0-pre.8
+    - 4.2.0-pre.9
+    - 4.2.0-pre.10
+    - 4.2.0-pre.12
+    - 4.2.0
+    - 4.2.1
+    - 4.2.2
+    - 4.2.3
+    - 4.2.6
+    - 4.2.7
+    - 4.2.8
+    - 4.2.9
+    - 4.2.10
+    - 5.0.0-pre.5
+    - 5.0.0-pre.6
+    - 5.0.0-pre.7
+    - 5.0.0-pre.8
+    - 5.0.0-pre.9
+    - 5.0.0-pre.12
+    - 5.0.0-pre.13
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+    - 5.0.5
+    - 5.0.6
+    - 5.0.7
+    - 5.1.0-pre.1
+    - 5.1.0-pre.2
+    - 5.1.0-pre.3
+    - 5.1.0-pre.4
+    - 5.1.0-pre.6
+    - 5.1.0-pre.8
+    - 5.1.0-pre.9
+    - 5.1.0-pre.10
+    - 5.1.0
+    - 5.1.1
+    - 5.1.2
+    - 5.1.3
+    - 5.1.4
+    - 5.1.5
+    - 5.1.6
+    - 5.2.0
+    - 5.2.2
+    - 6.0.0-pre.3
+    - 6.0.0-pre.4
+    - 6.0.0-pre.5
+    - 6.0.0-pre.6
+    - 6.0.0-pre.7
+    - 6.0.0-pre.8
+    - 6.0.1
+    - 6.0.2
+    - 6.0.3
+    - 6.0.4
+    - 6.0.5
+    - 6.0.6
+    - 6.0.7
+    - 6.0.8
+    - 6.1.0-pre.1
+    - 6.1.0-pre.2
+    - 6.1.0-pre.3
+    - 6.1.0-pre.4
+    - 6.1.0-pre.5
+    - 6.1.0
+    - 6.1.1
+    - 6.2.0-pre.1
+    - 6.2.0-pre.2
+    - 6.2.0-pre.3
+    - 6.2.0-pre.4
+    - 6.2.0
+    - 6.2.1
+    - 6.3.0-pre.1
+    - 6.3.0-pre.2
+    - 6.3.0
+    - 6.3.1
+    - 6.3.2
+    - 6.3.3
+    - 6.3.4
+    - 6.3.5
+    - 6.4.0-pre.1
+    - 6.4.0
+    - 6.4.1
+    - 6.4.2
+    - 6.4.3
+    - 6.5.0-pre.1
+    - 6.5.0-pre.2
+    - 6.5.0-pre.3
+    - 6.5.0
+    - 6.6.0-pre.1
+    - 6.6.0-pre.2
+    - 6.6.0
+    compatible:
+    - 6.4.3
+    - 6.5.0-pre.1
+    - 6.5.0-pre.2
+    - 6.5.0-pre.3
+    - 6.5.0
+    - 6.6.0-pre.1
+    - 6.6.0-pre.2
+    - 6.6.0
+    recommended: 6.4.3
+    deprecated: []
+  dependencies:
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.inputsystem
+    version: 1.6.3
+  - name: com.unity.mathematics
+    version: 1.2.6
+  - name: com.unity.xr.core-utils
+    version: 2.5.1
+  - name: com.unity.xr.management
+    version: 4.4.0
+  - name: com.unity.editorcoroutines
+    version: 1.0.0
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  - name: com.unity.modules.unityanalytics
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.inputsystem
+    version: 1.19.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.mathematics
+    version: 1.3.3
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.management
+    version: 4.5.4
+  - name: com.unity.xr.legacyinputhelpers
+    version: 3.0.1
+  - name: com.unity.editorcoroutines
+    version: 1.1.0
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  - name: com.unity.modules.unityanalytics
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  keywords:
+  - xreditorsubsystem
+  - xr
+  - ar
+  - augmented
+  - mixed
+  - reality
+  - foundation
+  - core
+  - subsystem
+  - simulation
+  - visualscripting
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639101641974730000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.5/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/arfoundation.git
+    revision: 116af15c3fda31344435771fa9e9e7553f68132b
+    path: 
+  unityLifecycle:
+    version: 6.4.3
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"No changes"}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 13d2457b468bdba0500ae2635522c877a0bc9645
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 6.4.3
+    minimumUnityVersion: 6000.0
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.xr.compositionlayers@2.4.0
+  testable: 0
+  isDirectDependency: 0
+  version: 2.4.0
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.xr.compositionlayers@461024b1d757
+  assetPath: Packages/com.unity.xr.compositionlayers
+  name: com.unity.xr.compositionlayers
+  displayName: XR Composition Layers
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Support for Provider based XR SDK Composition Layers.
+  errors: []
+  versions:
+    all:
+    - 0.5.0
+    - 0.6.0
+    - 1.0.0
+    - 2.0.0
+    - 2.1.0
+    - 2.1.1
+    - 2.2.0
+    - 2.3.0
+    - 2.4.0
+    - 2.5.0
+    compatible:
+    - 2.4.0
+    - 2.5.0
+    recommended: 2.4.0
+    deprecated: []
+  dependencies:
+  - name: com.unity.inputsystem
+    version: 1.6.3
+  - name: com.unity.xr.core-utils
+    version: 2.2.2
+  - name: com.unity.xr.management
+    version: 4.0.1
+  resolvedDependencies:
+  - name: com.unity.inputsystem
+    version: 1.19.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.xr.core-utils
+    version: 2.6.0
+  - name: com.unity.modules.xr
+    version: 1.0.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.xr.management
+    version: 4.5.4
+  - name: com.unity.xr.legacyinputhelpers
+    version: 3.0.1
+  keywords:
+  - xr
+  - composition
+  - layers
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 639092807903060000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.xr.compositionlayers@2.4/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/xr.sdk.compositionlayers.git
+    revision: 07eb3d7be746da80d5dbc86ee7e632f763af8d1e
+    path: 
+  unityLifecycle:
+    version: 2.4.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n* Added `CompositionLayerManager.TryGetLayerId(CompositionLayer
+    layer, out int layerId)` to get a layer''s unique id instead of `GetInstanceID()`
+    or `GetEntityID()`.\n\n### Fixed\n* Fixed `InteractableUIMirror` to support creating
+    or duplicating them during runtime such as with prefabs or asset bundles.\n*
+    Fixed `CompositionLayersRuntimeSettings` so that the `Script` property is no
+    longer modifiable from the inspector.\n* Fixed `InteractableUIMirror` so cameras
+    can be added at runtime without camera layer issues.\n* Fixed `ScriptableSingleton`
+    warning log when first launching a project with the composition layers package.\n\n###
+    Changed\n* Changed `InteractactableUIMirror` Cameras so they are visible in the
+    inspector\n* Changed how CompositionLayerManager initializes `LayerInfo.Id` to
+    use its own generated unique ids instead of `GetInstanceID()` or `GetEntityID()`."}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 461024b1d757aaf3b16bd38f36af0650008ef687
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.4.0
+    minimumUnityVersion: 2022.3.11f1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.mathematics@1.3.3
+  testable: 0
+  isDirectDependency: 0
+  version: 1.3.3
+  source: 1
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.mathematics@19a9377c4ffa
+  assetPath: Packages/com.unity.mathematics
+  name: com.unity.mathematics
+  displayName: Mathematics
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Unity's C# SIMD math library providing vector types and math functions
+    with a shader like syntax.
+  errors: []
+  versions:
+    all:
+    - 0.0.12-preview.2
+    - 0.0.12-preview.5
+    - 0.0.12-preview.8
+    - 0.0.12-preview.10
+    - 0.0.12-preview.11
+    - 0.0.12-preview.13
+    - 0.0.12-preview.17
+    - 0.0.12-preview.19
+    - 0.0.12-preview.20
+    - 1.0.0-preview.1
+    - 1.0.1
+    - 1.1.0-preview.1
+    - 1.1.0
+    - 1.2.1
+    - 1.2.4
+    - 1.2.5
+    - 1.2.6
+    - 1.3.1
+    - 1.3.2
+    - 1.3.3
+    compatible:
+    - 1.3.3
+    recommended: 1.3.3
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638950052122000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/Unity.Mathematics.git
+    revision: 1695a8503482a3131be78cc26308a93f82c05b04
+    path: 
+  unityLifecycle:
+    version: 1.3.3
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n* Fixed `math.hash` crash when using IL2CPP
+    builds on Arm 32 bit devices.\n* Fixed obsolete method usage warnings for `MatrixDrawer.CanCacheInspectorGUI`
+    and `PrimitiveVectorDrawer.CanCacheInspectorGUI` in UNITY_2023_2_OR_NEWER.\n*
+    Updated minimum editor version to 2021.3"}'
+  signature:
+    status: 1
+    reason: Signature is ok
+    attestation:
+      format: archive
+      publishingChannel: unity
+      entitlementKeys: []
+      ownerOrgName: 
+      ownerOrgId: 
+      publisherName: 
+    errorCode: 
+  assetStore:
+    productId: 
+  fingerprint: 19a9377c4ffa59370edad3e6a34e4445529badde
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.3.3
+    minimumUnityVersion: 2021.3
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
 - packageId: com.unity.sysroot.base@1.1.0
   testable: 0
   isDirectDependency: 0
@@ -6393,54 +8052,46 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
-- packageId: com.unity.mathematics@1.3.3
+- packageId: com.unity.editorcoroutines@1.1.0
   testable: 0
   isDirectDependency: 0
-  version: 1.3.3
+  version: 1.1.0
   source: 1
-  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.mathematics@19a9377c4ffa
-  assetPath: Packages/com.unity.mathematics
-  name: com.unity.mathematics
-  displayName: Mathematics
+  resolvedPath: /srv/UbuntuShare/Crazyflie-Figure8-Simulation/Unity-Simulation/Library/PackageCache/com.unity.editorcoroutines@87a15ed012c2
+  assetPath: Packages/com.unity.editorcoroutines
+  name: com.unity.editorcoroutines
+  displayName: Editor Coroutines
   author:
     name: 
     email: 
     url: 
   category: 
   type: 
-  description: Unity's C# SIMD math library providing vector types and math functions
-    with a shader like syntax.
+  description: 'The editor coroutines package allows developers to start constructs
+    similar to Unity''s monobehaviour based coroutines within the editor using arbitrary
+    objects. '
   errors: []
   versions:
     all:
-    - 0.0.12-preview.2
-    - 0.0.12-preview.5
-    - 0.0.12-preview.8
-    - 0.0.12-preview.10
-    - 0.0.12-preview.11
-    - 0.0.12-preview.13
-    - 0.0.12-preview.17
-    - 0.0.12-preview.19
-    - 0.0.12-preview.20
-    - 1.0.0-preview.1
+    - 0.0.1-preview.3
+    - 0.0.1-preview.4
+    - 0.0.1-preview.5
+    - 0.0.2-preview.1
+    - 0.1.0-preview.1
+    - 0.1.0-preview.2
+    - 1.0.0
     - 1.0.1
-    - 1.1.0-preview.1
     - 1.1.0
-    - 1.2.1
-    - 1.2.4
-    - 1.2.5
-    - 1.2.6
-    - 1.3.1
-    - 1.3.2
-    - 1.3.3
     compatible:
-    - 1.3.3
-    recommended: 1.3.3
+    - 1.1.0
+    recommended: 1.1.0
     deprecated: []
   dependencies: []
   resolvedDependencies: []
   keywords:
-  - unity
+  - coroutine
+  - coroutines
+  - editor
   registry:
     id: main
     name: 
@@ -6456,16 +8107,16 @@ m_ResolvedPackages:
   entitlements:
     licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638950052122000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/index.html
+  datePublishedTicks: 639107374596640000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.editorcoroutines@1.1/manual/index.html
   hasRepository: 1
   repository:
     type: git
-    url: https://github.com/Unity-Technologies/Unity.Mathematics.git
-    revision: 1695a8503482a3131be78cc26308a93f82c05b04
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.editorcoroutines.git
+    revision: fe3477fa8c73dfd5e2e03a4960fff28d1b2c7cf1
     path: 
   unityLifecycle:
-    version: 1.3.3
+    version: 1.1.0
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -6476,10 +8127,11 @@ m_ResolvedPackages:
   git:
     hash: 
     revision: 
-  upmReserved: '{"changelog":"### Fixed\n* Fixed `math.hash` crash when using IL2CPP
-    builds on Arm 32 bit devices.\n* Fixed obsolete method usage warnings for `MatrixDrawer.CanCacheInspectorGUI`
-    and `PrimitiveVectorDrawer.CanCacheInspectorGUI` in UNITY_2023_2_OR_NEWER.\n*
-    Updated minimum editor version to 2021.3"}'
+  upmReserved: '{"changelog":"### Changed\n - Fixed an issue with nested coroutines
+    where unsubscribing from inside a coroutine could thow a NullReferenceException,
+    case [UUM-122753](https://issuetracker.unity3d.com/issues/the-coroutine-still-executes-for-one-frame-and-throws-a-nullreferenceexception-when-its-stopped-from-editorapplication-dot-update).\n
+    - Improved documentation for the EditorCoroutine class.\n - Increased the minimum
+    Unity version required to 2022LTS."}'
   signature:
     status: 1
     reason: Signature is ok
@@ -6493,11 +8145,11 @@ m_ResolvedPackages:
     errorCode: 
   assetStore:
     productId: 
-  fingerprint: 19a9377c4ffa59370edad3e6a34e4445529badde
+  fingerprint: 87a15ed012c21ed5d88f4ba868a5b1948294627b
   editorCompatibility:
     compatibilityLevel: 0
-    minimumPackageVersion: 1.3.3
-    minimumUnityVersion: 2021.3
+    minimumPackageVersion: 1.1.0
+    minimumUnityVersion: 2022.3
   compliance:
     status: 0
     violation:
