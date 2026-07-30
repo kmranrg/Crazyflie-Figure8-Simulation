@@ -4,7 +4,7 @@ public class TrajectoryVisualizer : MonoBehaviour
 {
     [Header("Match these to Figure8Controller")]
     public float radius = 2.0f;
-    public float height = 2.0f; // Must match the drone's height
+    public float height = 2.5f; // Must match the drone's height
     public int resolution = 100;
     
     private LineRenderer lineRenderer;

@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 551ff7f375d25d2ffa890de070caeea5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -336,13 +336,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Figure8Controller
   speed: 0.5
   radius: 2
-  height: 2
-  proportionalGain: 5
-  derivativeGain: 2
+  height: 2.5
+  attractiveGain: 3
+  repulsiveGain: 12
+  dampingGain: 1.5
   userHead: {fileID: 1898659760}
-  avoidanceRadius: 1.5
-  avoidanceForce: 15
-  safeDistance: 2
+  avoidanceRadius: 3
+  safetyBuffer: 1
 --- !u!1001 &223379368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrajectoryVisualizer
   radius: 2
-  height: 2
+  height: 2.5
   resolution: 100
 --- !u!4 &526184418
 Transform:
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 2126359581}
   - component: {fileID: 2126359580}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1337,7 +1337,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.05, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 700, y: 1, z: 700}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
