@@ -1,0 +1,17 @@
+python3 detect_decks.py 
+Scanning for Crazyflies...
+Found: radio://0/80/2M
+Connecting to radio://0/80/2M ...
+
+=== Decks detected by the firmware ===
+  - Flow deck v2
+  - Multi-ranger deck
+  - Z-ranger deck v2
+
+=== Deck memory chips (raw board names) ===
+  - bcMultiranger  (rev E, VID 0xBC, PID 0x0C)
+  - bcFlow2  (rev A, VID 0xBC, PID 0x0F)
+
+Link OK (pm.lowVoltage threshold = 3.200000047683716 V)
+
+Done.

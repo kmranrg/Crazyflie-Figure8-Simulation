@@ -113,3 +113,6 @@ InitTestScene*.unity*
 # big files
 office_studio_hr.glb
 PackageCache
+
+# python3 virtual environment
+venv
