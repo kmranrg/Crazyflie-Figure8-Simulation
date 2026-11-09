@@ -51,9 +51,8 @@ def main():
 
     def fly(flight):
         dt = 1.0 / config.CONTROL_RATE_HZ
-        print(">>> Settling for 2 s, then starting the figure-8 ...")
-        for _ in range(2 * config.CONTROL_RATE_HZ):
-            flight.tick("HOVER", (0.0, 0.0, args.height))
+        print(f">>> Hovering {config.FIG8_HOVER_TIME:.0f} s and checking the room, then starting the figure-8 ...")
+        flight.hover_and_check_room(args.height, args.width, config.FIG8_HOVER_TIME)
         flight.tick("FOLLOW", (0.0, 0.0, args.height), event="FOLLOW: starting the figure-8")
         next_lap = 1
         while not fig8.done:

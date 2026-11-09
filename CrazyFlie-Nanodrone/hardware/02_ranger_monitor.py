@@ -10,6 +10,7 @@ same filter as 04_figure8_avoid.py:
     clear    further than CLEAR_DISTANCE, or nothing in range
 
 Press q (or Ctrl+C) to stop. The readings are also saved to logs/.
+If no data arrives for more than a second (radio link lost), it says NO DATA.
 """
 
 import time
@@ -59,29 +60,43 @@ def main():
         telemetry.start()
         rfilter = RangeFilter(config)
         last_count = -1
-        drawn = False
-        start = time.monotonic()
+        lines = []
+        start = last_data = time.monotonic()
+        stale_logged = False
         print(f"\nAVOID below {config.AVOID_DISTANCE} m (after {config.AVOID_CONFIRM_COUNT} readings in a row), "
               f"clear above {config.CLEAR_DISTANCE} m. Press q to quit.\n")
+
+        def draw(new_lines):
+            if lines:
+                print(f"\033[{len(lines)}F", end="")      # move the cursor back up to redraw
+            for line in new_lines:
+                print(line + "\033[K")                     # \033[K clears the rest of the line
+            lines[:] = new_lines
+
         with FlightLogger(config.LOG_DIR, "02_ranger") as logger, KeyboardStop() as keys:
             try:
                 while not keys.land_requested.is_set():
                     snap = telemetry.snapshot()
+                    now = time.monotonic()
                     if snap["range_count"] != last_count:     # a new set of readings arrived
                         last_count = snap["range_count"]
-                        rfilter.update(snap, time.monotonic() - start)
+                        last_data = now
+                        stale_logged = False
+                        rfilter.update(snap, now - start)
                         blocked = rfilter.blocked()
                         logger.write({k: snap.get(k) for k in BEAMS + ("zrange", "vbat")}
-                                     | dict(t=time.monotonic() - start, state="MONITOR",
-                                            beam=",".join(blocked)))
-                        lines = [f"  {b:6s} {describe(b, snap.get(b), rfilter)}" for b in BEAMS]
-                        lines.append(f"  {'down':6s} {snap.get('zrange', 0):5.2f}m (Flow deck height sensor)")
-                        lines.append(f"  >>> WOULD AVOID: {', '.join(blocked)}" if blocked else "  (no avoidance)")
-                        if drawn:
-                            print(f"\033[{len(lines)}F", end="")   # move the cursor back up to redraw
-                        for line in lines:
-                            print(line + "\033[K")                  # \033[K clears the rest of the line
-                        drawn = True
+                                     | dict(t=now - start, state="MONITOR", beam=",".join(blocked)))
+                        new_lines = [f"  {b:6s} {describe(b, snap.get(b), rfilter)}" for b in BEAMS]
+                        new_lines.append(f"  {'down':6s} {snap.get('zrange', 0):5.2f}m (Flow deck height sensor)")
+                        new_lines.append(f"  >>> WOULD AVOID: {', '.join(blocked)}" if blocked else "  (no avoidance)")
+                        draw(new_lines)
+                    elif now - last_data > 1.0 and lines:
+                        # no new data: the radio link is probably lost (the values above are old)
+                        draw(lines[:-1] + [f"  >>> NO DATA for {now - last_data:.0f} s: radio link lost? "
+                                           "Check the drone and the Crazyradio. Press q to quit."])
+                        if not stale_logged:
+                            logger.write(dict(t=now - start, state="MONITOR", event="NO DATA: link lost?"))
+                            stale_logged = True
                     time.sleep(0.02)
             except KeyboardInterrupt:
                 pass

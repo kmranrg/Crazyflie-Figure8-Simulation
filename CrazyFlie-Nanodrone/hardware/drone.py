@@ -21,15 +21,41 @@ import time
 import cflib.crtp
 from cflib.crazyflie import Crazyflie
 from cflib.crazyflie.log import LogConfig
+from cflib.crazyflie.supervisor import BIT_IS_CRASHED, BIT_IS_LOCKED, BIT_IS_TUMBLED
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 
-from common import FlightLogger, KeyboardStop, RateKeeper
+from common import FlightLogger, KeyboardStop, RateKeeper, add_flight_note
 
 RANGE_NAMES = ("front", "back", "left", "right", "up", "zrange")
 
 # pm.state values reported by the firmware
 PM_CHARGING, PM_CHARGED, PM_LOW_POWER = 1, 2, 3
+
+# Log variables whose short name would be unclear in the snapshot / CSV
+SHORT_NAMES = {"supervisor.info": "supinfo"}
+
+
+def supervisor_problem(bits):
+    """'crashed', 'locked' or 'upside down' from the supervisor.info bit field (None if all is well)."""
+    if bits is None:
+        return None
+    bits = int(bits)
+    for bit, text in ((BIT_IS_CRASHED, "crashed"), (BIT_IS_LOCKED, "locked"), (BIT_IS_TUMBLED, "upside down")):
+        if bits >> bit & 1:
+            return text
+    return None
+
+
+def restart_message(why):
+    """The big 'restart the drone' notice shown after a crash or lock."""
+    bar = "!" * 72
+    return (f"\n{bar}\n"
+            f"  RESTART THE DRONE BEFORE THE NEXT FLIGHT ({why}).\n"
+            f"  1. Switch it off with the power button, wait 2 s, switch it on again.\n"
+            f"  2. Check all four propellers and that it sits flat on the floor.\n"
+            f"  3. Then run the script again (if the drone is locked, it refuses to fly until restarted).\n"
+            f"{bar}")
 
 
 class PreflightError(Exception):
@@ -64,7 +90,9 @@ class Telemetry:
 
     The drone streams two "log blocks" (a block can carry at most 26 bytes):
       Pose:   stateEstimate.x/y/z/yaw, pm.vbat, pm.state
-      Ranges: range.front/back/left/right/up/zrange, motion.squal
+      Ranges: range.front/back/left/right/up/zrange, motion.squal,
+              supervisor.info (crashed / locked / ... bits), radio.rssi
+    plus the radio link quality (0-100 %) measured by cflib on this computer.
     Variables that the drone does not have (e.g. a deck is missing) are skipped.
     """
 
@@ -87,9 +115,11 @@ class Telemetry:
                                     ("stateEstimate.z", "float"), ("stateEstimate.yaw", "float"),
                                     ("pm.vbat", "float"), ("pm.state", "int8_t")])
         self._ranges = block("Ranges", [(f"range.{n}", "uint16_t") for n in RANGE_NAMES]
-                             + [("motion.squal", "uint8_t")])
+                             + [("motion.squal", "uint8_t"), ("supervisor.info", "uint16_t"),
+                                ("radio.rssi", "uint8_t")])
 
     def start(self):
+        self.cf.link_statistics.link_quality_updated.add_callback(self._on_link_quality)
         for conf, callback in ((self._pose, self._on_pose), (self._ranges, self._on_ranges)):
             if not conf.variables:
                 continue
@@ -99,6 +129,10 @@ class Telemetry:
             conf.start()
 
     def stop(self):
+        try:
+            self.cf.link_statistics.link_quality_updated.remove_callback(self._on_link_quality)
+        except Exception:
+            pass
         for conf in (self._pose, self._ranges):
             try:
                 conf.stop()
@@ -114,9 +148,13 @@ class Telemetry:
     def _on_ranges(self, timestamp, data, logconf):
         with self._lock:
             for var, value in data.items():
-                key = var.split(".")[1]
+                key = SHORT_NAMES.get(var, var.split(".")[1])
                 self._data[key] = value / 1000.0 if var.startswith("range.") else value   # mm -> m
             self.range_count += 1
+
+    def _on_link_quality(self, quality):
+        with self._lock:
+            self._data["link"] = quality
 
     def snapshot(self):
         """A copy of the newest values, plus 'age' = seconds since the last position update."""
@@ -152,6 +190,18 @@ def check_decks(cf, need_flow=True, need_ranger=True):
             raise PreflightError(f"{name} NOT detected. Make sure it is pressed fully onto the pins "
                                  f"({where}), then switch the drone off and on again.")
         print(f"  OK   {name} detected")
+
+
+def check_supervisor(cf, telemetry):
+    """Refuse to fly when the drone reports it crashed, is locked or upside down."""
+    bits = telemetry.snapshot().get("supinfo")
+    if bits is None:                      # older firmware without the log variable: ask directly
+        bits = cf.supervisor.read_bitfield()
+    problem = supervisor_problem(bits)
+    if problem:
+        print(restart_message(f"the drone reports it is {problem}"))
+        raise PreflightError(f"the drone reports it is {problem}. Restart it first.")
+    print("  OK   drone ready (not crashed, locked or upside down)")
 
 
 def configure(cf):
@@ -242,6 +292,10 @@ class Flight:
         self.flying = False
         self.landed = False
         self.low_battery_since = None
+        self.z_target = None                 # height we asked for (None during takeoff and landing)
+        self.control_start = None            # when we started sending our own setpoints
+        self.height_error_since = None
+        self.needs_restart = None            # set to a reason after a crash, lock or failed takeoff
 
     def elapsed(self):
         return time.monotonic() - self.t0
@@ -258,6 +312,21 @@ class Flight:
             return f"GEOFENCE: {distance:.2f} m from the start point (limit {cfg.GEOFENCE_RADIUS} m)"
         if snap["z"] > cfg.GEOFENCE_MAX_HEIGHT:
             return f"GEOFENCE: height {snap['z']:.2f} m (limit {cfg.GEOFENCE_MAX_HEIGHT} m)"
+        problem = supervisor_problem(snap.get("supinfo"))
+        if problem:
+            self.needs_restart = f"the drone reported it {problem} in flight"
+            return f"the drone reports it is {problem}"
+        if self.z_target is not None and self.elapsed() - self.control_start > 1.0:
+            # the first second after takeoff is skipped: the height overshoots a little there
+            error = abs(snap["z"] - self.z_target)
+            if error > cfg.HEIGHT_ERROR_LIMIT:
+                if self.height_error_since is None:
+                    self.height_error_since = time.monotonic()
+                if time.monotonic() - self.height_error_since > cfg.HEIGHT_ERROR_TIME:
+                    return (f"HEIGHT: {snap['z']:.2f} m instead of {self.z_target:.2f} m "
+                            f"for {cfg.HEIGHT_ERROR_TIME} s")
+            else:
+                self.height_error_since = None
         if snap.get("state") == PM_LOW_POWER:
             return "battery low (reported by the drone)"
         if snap.get("vbat", 4.2) < cfg.LAND_VOLTAGE:
@@ -272,7 +341,8 @@ class Flight:
         return None
 
     def log(self, snap, state, setpoint=None, event="", beam=""):
-        row = {k: snap.get(k) for k in ("x", "y", "z", "yaw", "vbat", "squal") + RANGE_NAMES}
+        row = {k: snap.get(k) for k in ("x", "y", "z", "yaw", "vbat", "squal", "supinfo", "rssi", "link")
+               + RANGE_NAMES}
         row.update(t=self.elapsed(), state=state, event=event, beam=beam)
         if setpoint:
             row.update(sp_x=setpoint[0], sp_y=setpoint[1], sp_z=setpoint[2])
@@ -287,9 +357,16 @@ class Flight:
         self.flying = True
         self.cf.high_level_commander.takeoff(height, cfg.TAKEOFF_TIME)
         end = time.monotonic() + cfg.TAKEOFF_TIME + 0.5
+        snap = None
         while time.monotonic() < end:
-            self.tick("TAKEOFF", None)     # watch safety, but let the drone climb by itself
-        print(">>> In the air.")
+            snap = self.tick("TAKEOFF", None)     # watch safety, but let the drone climb by itself
+        if snap["z"] < cfg.TAKEOFF_MIN_HEIGHT_FRACTION * height:
+            problem = supervisor_problem(snap.get("supinfo"))
+            why = f"the drone reports it is {problem}" if problem else "the motors did not lift it"
+            self.needs_restart = f"it did not take off: {why}"
+            self.log(snap, "TAKEOFF", event=f"ABORT: did not take off (height {snap['z']:.2f} m, {why})")
+            raise AbortFlight(f"DID NOT TAKE OFF: height {snap['z']:.2f} m after {cfg.TAKEOFF_TIME + 0.5:.1f} s ({why})")
+        print(f">>> In the air ({snap['z']:.2f} m).")
 
     def tick(self, state, setpoint, event="", beam=""):
         """One control step: safety check, send the (x, y, z) setpoint, log, wait.
@@ -311,12 +388,52 @@ class Flight:
                 x, y = x * limit / distance, y * limit / distance
             z = min(z, cfg.GEOFENCE_MAX_HEIGHT - 0.1)
             setpoint = (x, y, z)
+            if self.control_start is None:
+                self.control_start = self.elapsed()
+            self.z_target = z
             self.cf.commander.send_position_setpoint(x, y, z, 0.0)   # yaw 0 degrees: keep facing +X
         if event:
             print(f"[{self.elapsed():6.1f} s] {event}")
         self.log(snap, state, setpoint, event, beam)
         self.rate.wait()
         return self.telemetry.snapshot()
+
+    def hover_and_check_room(self, height, width, seconds):
+        """Hover at the centre before the figure-8, and report how much room there is.
+
+        Prints, per beam, how far the nearest thing is from the figure-8 path, with a
+        warning when it is closer than CLEAR_DISTANCE (walls that close make
+        avoidance awkward). Returns the last telemetry snapshot.
+        """
+        cfg = self.cfg
+        readings = {b: [] for b in ("front", "back", "left", "right")}
+        snap = None
+        for _ in range(int(seconds * cfg.CONTROL_RATE_HZ)):
+            snap = self.tick("HOVER", (0.0, 0.0, height))
+            for beam, values in readings.items():
+                d = snap.get(beam)
+                if d is not None and cfg.RANGE_MIN_VALID <= d < cfg.RANGE_MAX_VALID:
+                    values.append(d)
+        reach = {"front": width / 4, "back": width / 4, "left": width / 2, "right": width / 2}
+        lines, warnings = [], []
+        ticks = max(1, int(seconds * cfg.CONTROL_RATE_HZ))
+        for beam, values in readings.items():
+            if len(values) < 0.3 * ticks:
+                lines.append(f"{beam} nothing within {cfg.RANGE_MAX_VALID:.0f} m")
+                continue
+            values.sort()
+            d = values[len(values) // 2]
+            gap = d - reach[beam]
+            lines.append(f"{beam} {d:.2f} m ({gap:.2f} m from the path)")
+            if gap < cfg.CLEAR_DISTANCE:
+                warnings.append(f"{beam}: something {gap:.2f} m from the figure-8 "
+                                f"(want at least {cfg.CLEAR_DISTANCE:.1f} m)")
+        text = "ROOM: " + ", ".join(lines)
+        print(f">>> {text}")
+        for w in warnings:
+            print(f">>> WARNING {w}. Avoidance will be awkward; move the takeoff point next time.")
+        self.log(snap, "HOVER", (0.0, 0.0, height), text + ("; WARNING " + "; ".join(warnings) if warnings else ""))
+        return snap
 
     def kill_motors(self):
         self.cf.commander.send_stop_setpoint()
@@ -340,23 +457,44 @@ class Flight:
             height = snap.get("z") or cfg.FLIGHT_HEIGHT
             duration = max(1.5, height / cfg.LANDING_SPEED)
             # Hand control back from our setpoints to the drone's own high-level commander.
+            self.z_target = None
             self.cf.commander.send_notify_setpoint_stop()
             self.cf.high_level_commander.land(0.0, duration)
             end = time.monotonic() + duration + 0.5
             killed = False
+            heard_from_drone = False
+            last_send = time.monotonic()
             while time.monotonic() < end:
                 if self.keys.kill_requested.is_set():
                     self.kill_motors()
                     killed = True
                     break
-                self.log(self.telemetry.snapshot(), "LAND", event=reason if reason else "")
+                snap = self.telemetry.snapshot()
+                if snap["age"] > cfg.TELEMETRY_TIMEOUT:
+                    # No data: the link may be down. Keep repeating the land command, so it
+                    # gets through as soon as the link comes back for a moment.
+                    if time.monotonic() - last_send > cfg.LAND_RESEND_PERIOD:
+                        self.cf.high_level_commander.land(0.0, duration)
+                        last_send = time.monotonic()
+                else:
+                    heard_from_drone = True
+                self.log(snap, "LAND", event=reason if reason else "")
                 reason = ""                       # only log the reason once
                 time.sleep(0.05)
             self.cf.high_level_commander.stop()
             time.sleep(0.1)
             self.cf.supervisor.send_arming_request(False)
             time.sleep(0.2)                       # let the last packets leave before the link closes
-            if not killed:
+            snap = self.telemetry.snapshot()
+            if not heard_from_drone:
+                print(">>> NO DATA FROM THE DRONE during the whole landing: the radio link is lost, so")
+                print("    the landing could not be checked. The land command was repeated; if it never")
+                print("    arrived, the drone's own safety timeout stops the motors and it drops.")
+                print("    Check the Crazyradio (USB extension cable, raised, in sight of the drone).")
+                self.needs_restart = self.needs_restart or "the radio link was lost; it may have dropped"
+            elif supervisor_problem(snap.get("supinfo")):
+                self.needs_restart = f"the drone reports it is {supervisor_problem(snap.get('supinfo'))}"
+            if not killed and heard_from_drone:
                 print(">>> Landed, motors off.")
         finally:
             signal.signal(signal.SIGINT, previous_handler)
@@ -369,9 +507,11 @@ class Flight:
 def run_flight(cfg, name, plan_lines, height, fly):
     """Connect, run the pre-flight checks, ask for confirmation, take off,
     call fly(flight), and ALWAYS land afterwards (also on errors and Ctrl+C).
+    Afterwards, ask for a one-line flight note.
 
     fly(flight) holds the script's own logic; it calls flight.tick(...) in a loop.
     """
+    logger = None
     scf = connect(cfg)
     try:
         scf.open_link()
@@ -389,6 +529,7 @@ def run_flight(cfg, name, plan_lines, height, fly):
             telemetry.start()
             telemetry.wait_for_data()
             check_battery(telemetry, cfg)
+            check_supervisor(cf, telemetry)
             confirm_takeoff(plan_lines)
             reset_estimator(cf, telemetry, cfg)
         except PreflightError as e:
@@ -398,6 +539,8 @@ def run_flight(cfg, name, plan_lines, height, fly):
             print("\nCancelled. The drone did not take off.")
             return
 
+        cf.connection_lost.add_callback(
+            lambda uri, message: print(f"\n>>> RADIO LINK LOST ({message}). Landing as soon as possible ..."))
         with FlightLogger(cfg.LOG_DIR, name) as logger, KeyboardStop() as keys:
             flight = Flight(cf, cfg, telemetry, keys, logger)
             reason = "flight finished"
@@ -414,6 +557,10 @@ def run_flight(cfg, name, plan_lines, height, fly):
             finally:
                 flight.land(reason)
                 print(f"Flight log saved to {logger.path}")
+                if flight.needs_restart:
+                    print(restart_message(flight.needs_restart))
         telemetry.stop()
     finally:
         scf.close_link()
+    if logger is not None:
+        add_flight_note(cfg.NOTES_FILE, logger.path.stem)

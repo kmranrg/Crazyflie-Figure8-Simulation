@@ -1,1 +1,7 @@
 __pycache__/
+# cflib's cached list of the drone's variables (made again on connect)
+cache/
+# flight logs and generated plots stay on this computer
+logs/*.csv
+logs/*.png
+logs/plots/

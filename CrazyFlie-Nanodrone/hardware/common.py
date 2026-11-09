@@ -18,9 +18,12 @@ from datetime import datetime
 #   front ... zrange     raw ranger readings (up to ~4 m; bigger numbers mean "nothing seen")
 #   squal                Flow deck surface quality (0-255, higher is better)
 #   person_x, person_y   only in dry runs: where the fake person was
+#   supinfo              the drone's supervisor bits (crashed, locked, upside down, ...)
+#   rssi, link           radio signal strength reported by the drone, and link quality (0-100 %)
+#                        measured on this computer
 LOG_COLUMNS = ["t", "state", "event", "beam", "x", "y", "z", "yaw", "sp_x", "sp_y", "sp_z",
                "vbat", "front", "back", "left", "right", "up", "zrange", "squal",
-               "person_x", "person_y"]
+               "person_x", "person_y", "supinfo", "rssi", "link"]
 
 
 class FlightLogger:
@@ -52,6 +55,28 @@ class FlightLogger:
 
     def __exit__(self, *exc):
         self.close()
+
+
+def add_flight_note(notes_file, log_name):
+    """Ask for one line about the flight and add it to the notes file (Enter skips).
+
+    analyze_logs.py shows these notes next to the plots, so later analysis knows
+    what you did and what you saw.
+    """
+    try:
+        text = input("\nFlight note, one line: what you did, what the drone did (Enter to skip):\n> ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print()
+        return
+    if not text:
+        return
+    new = not notes_file.exists()
+    notes_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(notes_file, "a") as f:
+        if new:
+            f.write("# Flight notes\n\nOne line per flight: `- <log name>: what I did / what the drone did`\n\n")
+        f.write(f"- {log_name}: {text}\n")
+    print(f"Note saved to {notes_file}")
 
 
 class KeyboardStop:

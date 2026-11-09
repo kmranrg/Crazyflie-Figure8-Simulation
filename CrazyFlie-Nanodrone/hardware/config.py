@@ -24,6 +24,7 @@ HERE = Path(__file__).resolve().parent
 URI = "radio://0/80/2M/E7E7E7E7E7"
 CACHE_DIR = HERE / "cache"          # cflib stores the drone's variable list here (faster connect)
 LOG_DIR = HERE / "logs"             # flight logs (CSV) and dry-run plots (PNG)
+NOTES_FILE = LOG_DIR / "FLIGHT_NOTES.md"   # one line per flight, asked for after landing
 
 # --------------------------------------------------------------------------
 # Basic flight
@@ -47,24 +48,31 @@ FIG8_WIDTH = 1.0                    # m, left-right size (depth = 0.5 m)
 FIG8_SPEED = 0.25                   # m/s AVERAGE speed along the path (peak is about 1.46x)
 FIG8_LAPS = 2                       # how many figure-8s to fly before landing
 FIG8_RAMP_TIME = 3.0                # s to speed up from standstill (and to slow down at the end)
+FIG8_HOVER_TIME = 4.0               # s hovering at the centre before the figure-8 starts (03 and 04):
+                                    # lets the height settle after takeoff and checks the room
 
 # --------------------------------------------------------------------------
 # Person avoidance (04_figure8_avoid.py)
 # --------------------------------------------------------------------------
 AVOID_BEAMS = ("front", "back", "left", "right")   # the up beam is ignored on purpose
 AVOID_DISTANCE = 0.6                # m, a beam closer than this (confirmed) starts AVOID
-CLEAR_DISTANCE = 1.0                # m, every beam must see further than this to count as clear
-AVOID_CONFIRM_COUNT = 3             # consecutive close readings needed before AVOID (glitch filter)
+CLEAR_DISTANCE = 1.0                # m, to return to the path, the beams that saw the person and the
+                                    # beam facing the way back must see further than this
+AVOID_CONFIRM_COUNT = 3             # consecutive close readings needed before AVOID (glitch filter).
+                                    # The sensor measures ~10x per second and each measurement arrives
+                                    # twice, so 3 readings = 2 measurements, about 0.15 s.
 CLEAR_TIME = 2.0                    # s the area must stay clear before returning to the path
-RETREAT_DISTANCE = 0.3              # m, how far the drone moves away from the person
+RETREAT_DISTANCE = 0.3              # m, sideways step, and the shortest move away from the person
+MAX_RETREAT_DISTANCE = 0.6          # m, longest move away from the person
+RETREAT_MARGIN = 0.1                # m, backing away aims for CLEAR_DISTANCE + this from the person
 RETREAT_FREE_MARGIN = 0.3           # m, extra free space needed on the side we move towards
 AVOID_SPEED = 0.4                   # m/s while moving away
 # Someone walking AT the drone: backing away along their line can't work (they are
-# faster), and 0.6 m is too late a warning. So when a reading shrinks faster than
-# APPROACH_SPEED, AVOID already starts at EARLY_AVOID_DISTANCE and dodges sideways first.
-# APPROACH_SPEED is above the figure-8's own peak speed, so flying towards a still
-# object does not count as "approaching". Set it to 99 to switch this off.
-APPROACH_SPEED = 0.4                # m/s
+# faster), and 0.6 m is too late a warning. So when the object itself moves towards
+# the drone faster than APPROACH_SPEED, AVOID already starts at EARLY_AVOID_DISTANCE
+# and dodges sideways first. The drone's own movement is taken out, so flying towards
+# a wall does not count as "approaching". Set it to 99 to switch this off.
+APPROACH_SPEED = 0.25               # m/s
 EARLY_AVOID_DISTANCE = 1.2          # m
 RETURN_SPEED = 0.2                  # m/s while flying back to the figure-8
 POSITION_TOLERANCE = 0.10           # m, "close enough" to a target point
@@ -74,6 +82,8 @@ MAX_PAUSE_TIME = 25.0               # s, land if the figure-8 stays paused (avoi
 # Multi-ranger reading filter
 RANGE_MIN_VALID = 0.02              # m, readings below this are glitches and are ignored
 RANGE_MAX_VALID = 4.0               # m, readings at/above this mean "nothing in range"
+DROPOUT_HOLD_TIME = 0.5             # s, "nothing in range" this soon after a real reading may be a
+                                    # sensor dropout: it does not count as clear until this has passed
 
 # --------------------------------------------------------------------------
 # Safety limits (checked many times per second in every flying script)
@@ -81,10 +91,15 @@ RANGE_MAX_VALID = 4.0               # m, readings at/above this mean "nothing in
 GEOFENCE_RADIUS = 1.5               # m, max horizontal distance from the takeoff point
 GEOFENCE_MAX_HEIGHT = 1.2           # m, max height
 GEOFENCE_MARGIN = 0.2               # m, avoidance targets are kept this far inside the fence
-MIN_TAKEOFF_VOLTAGE = 3.8           # V, refuse to take off below this (full battery = 4.2 V)
+MIN_TAKEOFF_VOLTAGE = 3.9           # V, refuse to take off below this (full battery = 4.2 V)
 LAND_VOLTAGE = 3.3                  # V, land if the battery stays below this in flight
 LOW_BATTERY_TIME = 1.0              # s the voltage must stay low (ignores short sags)
 TELEMETRY_TIMEOUT = 0.5             # s without data from the drone -> land
+LAND_RESEND_PERIOD = 0.25           # s, while no data arrives during landing, repeat the land command
+TAKEOFF_MIN_HEIGHT_FRACTION = 0.5   # after takeoff the drone must be at least this part of the target
+                                    # height, or the script stops ("did not take off")
+HEIGHT_ERROR_LIMIT = 0.20           # m between target and actual height ...
+HEIGHT_ERROR_TIME = 0.5             # ... for this long -> land
 MAX_FLIGHT_TIME = 120.0             # s, land after this no matter what
 ESTIMATOR_TIMEOUT = 15.0            # s to wait for the position estimate to settle
 

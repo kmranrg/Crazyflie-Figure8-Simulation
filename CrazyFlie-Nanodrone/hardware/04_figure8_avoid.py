@@ -60,7 +60,7 @@ def dry_run(fig8, args, people):
         while not (fig8.done and sm.state == FOLLOW):
             # 1. fake sensor readings -> filter (on the real drone: telemetry)
             readings, glitched = fake_ranges(drone.pos, 0.0, people, t, config, rng)
-            sm.filter.update(readings, t)
+            sm.filter.update(dict(readings, x=drone.pos[0], y=drone.pos[1], yaw=0.0), t)
             # 2. the same state machine as the real flight
             n_events = len(events)
             setpoint = sm.step(t, dt, drone.pos, 0.0)
@@ -136,10 +136,9 @@ def main():
         pending = []                                # events from the state machine for the log
         sm = AvoidanceStateMachine(config, fig8, lambda text, beam: pending.append((text, beam)))
 
-        print(">>> Settling for 2 s, then starting the figure-8 with avoidance ...")
-        snap = None
-        for _ in range(2 * config.CONTROL_RATE_HZ):
-            snap = flight.tick("HOVER", (0.0, 0.0, height))
+        print(f">>> Hovering {config.FIG8_HOVER_TIME:.0f} s and checking the room, "
+              "then starting the figure-8 with avoidance ...")
+        snap = flight.hover_and_check_room(height, args.width, config.FIG8_HOVER_TIME)
         last_count = snap["range_count"]
         snap = flight.tick(FOLLOW, (0.0, 0.0, height), event="FOLLOW: starting the figure-8")
 
@@ -163,8 +162,9 @@ def main():
 
     lines = describe(fig8, args, config) + [
         f"AVOID when a beam sees something closer than {config.AVOID_DISTANCE} m "
-        f"({config.AVOID_CONFIRM_COUNT} readings in a row); move {config.RETREAT_DISTANCE} m away;",
-        f"return when all beams see more than {config.CLEAR_DISTANCE} m for {config.CLEAR_TIME:.0f} s."]
+        f"({config.AVOID_CONFIRM_COUNT} readings in a row); move {config.RETREAT_DISTANCE}-{config.MAX_RETREAT_DISTANCE} m away;",
+        f"return when the person's beam and the way back see more than {config.CLEAR_DISTANCE} m "
+        f"for {config.CLEAR_TIME:.0f} s."]
     run_flight(config, "04_figure8_avoid", lines, args.height, fly)
 
 
