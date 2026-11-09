@@ -1,0 +1,4 @@
+# Extra packages for the hardware scripts (cflib is already in the venv).
+# Install with:  pip install -r requirements.txt
+cflib>=0.1.34
+matplotlib>=3.10      # only needed for --dry-run plots
