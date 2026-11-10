@@ -91,7 +91,7 @@ DROPOUT_HOLD_TIME = 0.5             # s, "nothing in range" this soon after a re
 GEOFENCE_RADIUS = 1.5               # m, max horizontal distance from the takeoff point
 GEOFENCE_MAX_HEIGHT = 1.2           # m, max height
 GEOFENCE_MARGIN = 0.2               # m, avoidance targets are kept this far inside the fence
-MIN_TAKEOFF_VOLTAGE = 3.9           # V, refuse to take off below this (full battery = 4.2 V)
+MIN_TAKEOFF_VOLTAGE = 3.5           # V, refuse to take off below this (full battery = 4.2 V)
 LAND_VOLTAGE = 3.3                  # V, land if the battery stays below this in flight
 LOW_BATTERY_TIME = 1.0              # s the voltage must stay low (ignores short sags)
 TELEMETRY_TIMEOUT = 0.5             # s without data from the drone -> land
